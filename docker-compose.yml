@@ -1,17 +1,17 @@
 version: "3.5"
 
 services:
-  aws-cdk:
+  basic_ec2:
     build:
       context: .
-      dockerfile: ./Dockerfile
-    container_name: aws-cdk
+      dockerfile: ../basic_ec2_deploy/Dockerfile
+    container_name: basic_ec2
     tty: true
     working_dir: /usr/src/app
     volumes:
-      - ./aws:/usr/src/app:cached
-      - aws_node_modules:/usr/src/app/node_modules
-      - ./.aws:/root/.aws
+      - ../basic_ec2_deploy/aws:/usr/src/app:cached
+      - basic_ec2_node_modules:/usr/src/app/node_modules
+      - ../basic_ec2_deploy/.aws:/root/.aws
 
 volumes:
-  aws_node_modules:
+  basic_ec2_node_modules:
