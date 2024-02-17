@@ -12,6 +12,18 @@ services:
       - ../basic_ec2_deploy/aws:/usr/src/app:cached
       - basic_ec2_node_modules:/usr/src/app/node_modules
       - ../basic_ec2_deploy/.aws:/root/.aws
+  adoption:
+    build:
+      context: .
+      dockerfile: ../adoption_cdk/Dockerfile
+    container_name: adoption
+    tty: true
+    working_dir: /usr/src/app
+    volumes:
+      - ../adoption_cdk/aws:/usr/src/app:cached
+      - adoption_cdk_node_modules:/usr/src/app/node_modules
+      - ../adoption_cdk/.aws:/root/.aws
 
 volumes:
   basic_ec2_node_modules:
+  adoption_cdk_node_modules:
